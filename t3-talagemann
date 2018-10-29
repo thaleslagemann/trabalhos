@@ -1,0 +1,634 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+void imprime_string(char aux[])
+{
+	for (int i = 0; aux[i] != ' ' && aux[i] != '\0'; ++i)
+	{
+		printf("%c", aux[i]);
+	}
+	printf("\n");
+}
+
+void ordenaESP(char aux[])
+{
+	char var;
+	int a = 0, b = 0;
+	for (int i = 0; aux[i] != '\0'; ++i)
+	{
+		if (aux[i] == ' ') {
+			a++;
+		}
+	}
+	for (int j = 0; j < a; ++j) {
+		for (int i = 0; aux[i] != '\0'; ++i) {
+			if (aux[i] == ' ' && aux[i+1] != '\0') {
+				var = aux[i+1];
+				aux[i + 1] = aux[i];
+				aux[i] = var;
+			}
+		}
+	}
+}
+
+void ordenaI(char aux[])
+{
+	char var;
+	int a = 0;
+	for (int i = 0; aux[i] != '\0'; ++i) {
+		if (aux[i] == 'I') {
+			a++;
+		}
+	}
+	for (int j = 0; j < a; ++j) {
+		for (int i = 0; aux[i] != '\0'; ++i) {
+			if (aux[i] == 'I' && aux[i+1] != '\0') {
+				var = aux[i+1];
+				aux[i + 1] = aux[i];
+				aux[i] = var;
+			}
+		}
+	}
+}
+
+void ordenaV(char aux[])
+{
+	char var;
+	int a = 0;
+	for (int i = 0; aux[i] != '\0'; ++i)
+	{
+		if (aux[i] == 'V') {
+			a++;
+		}
+	}
+	if (a > 0){
+		for (int j = 0; j < a; ++j) {
+			for (int i = 0; aux[i] != 'I'; ++i) {
+				if (aux[i] == 'V' && aux[i+1] != 'I' && aux[i+1] != '\0') {
+					var = aux[i+1];
+					aux[i + 1] = aux[i];
+					aux[i] = var;
+				}
+			}
+		}
+	}
+}
+
+void ordenaX(char aux[])
+{
+	char var;
+	int a = 0;
+	for (int i = 0; aux[i] != '\0'; ++i)
+	{
+		if (aux[i] == 'X') {
+			a++;
+		}
+	}
+	for (int j = 0; j < a; ++j) {
+		for (int i = 0; aux[i] != 'V'; ++i) {
+			if (aux[i] == 'X' && aux[i+1] != 'V' && aux[i+1] != 'I' && aux[i+1] != '\0') {
+				var = aux[i+1];
+				aux[i + 1] = aux[i];
+				aux[i] = var;
+			}
+		}
+	}
+}
+
+void ordenaL(char aux[])
+{
+	char var;
+	int a = 0;
+	for (int i = 0; aux[i] != '\0'; ++i)
+	{
+		if (aux[i] == 'L') {
+			a++;
+		}
+	}
+	for (int j = 0; j < a; ++j) {
+		for (int i = 0; aux[i] != 'X'; ++i) {
+			if (aux[i] == 'L' && aux[i+1] != 'X' && aux[i+1] != 'V' && aux[i+1] != 'I' && aux[i+1] != '\0') {
+				var = aux[i+1];
+				aux[i + 1] = aux[i];
+				aux[i] = var;
+			}
+		}
+	}
+}
+
+void ordenaC(char aux[])
+{
+	char var;
+	int a = 0;
+	for (int i = 0; aux[i] != '\0'; ++i)
+	{
+		if (aux[i] == 'C') {
+			a++;
+		}
+	}
+	for (int j = 0; j < a; ++j) {
+		for (int i = 0; aux[i] != 'L'; ++i) {
+			if (aux[i] == 'C' && aux[i+1] != 'L' && aux[i+1] != 'X' && aux[i+1] != 'V' && aux[i+1] != 'I' && aux[i+1] != '\0') {
+				var = aux[i+1];
+				aux[i + 1] = aux[i];
+				aux[i] = var;
+			}
+		}
+	}
+}
+
+void ordenaD(char aux[])
+{
+	char var;
+	int a = 0;
+	for (int i = 0; aux[i] != '\0'; ++i)
+	{
+		if (aux[i] == 'D') {
+			a++;
+		}
+	}
+	for (int j = 0; j < a; ++j) {
+		for (int i = 0; aux[i] != 'C'; ++i) {
+			if (aux[i] == 'D' && aux[i+1] != 'C' && aux[i+1] != 'L' && aux[i+1] != 'X' && aux[i+1] != 'V' && aux[i+1] != 'I' && aux[i+1] != '\0') {
+				var = aux[i+1];
+				aux[i + 1] = aux[i];
+				aux[i] = var;
+			}
+		}
+	}
+}
+
+void ordenaM(char aux[])
+{
+	char var;
+	int a = 0;
+	for (int i = 0; aux[i] != '\0'; ++i)
+	{
+		if (aux[i] == 'M') {
+			a++;
+		}
+	}
+	for (int j = 0; j < a; ++j) {
+		for (int i = 0; aux[i] != 'D'; ++i) {
+			if (aux[i] == 'M' && aux[i+1] != 'D' && aux[i+1] != 'C' && aux[i+1] != 'L' && aux[i+1] != 'X' && aux[i+1] != 'V' && aux[i+1] != 'I' && aux[i+1] != '\0') {
+				var = aux[i+1];
+				aux[i + 1] = aux[i];
+				aux[i] = var;
+			}
+		}
+	}
+}
+
+void ordena(char aux[])
+{
+	ordenaI(aux);
+	ordenaV(aux);
+	ordenaX(aux);
+	ordenaL(aux);
+	ordenaC(aux);
+	ordenaD(aux);
+	ordenaM(aux);
+	ordenaESP(aux);
+}
+
+void substitui5IpV(char aux[])
+{
+	int c = 0, a, i = 0;
+	if (aux[0] == 'I') {
+		a = 0;
+	}
+	else {
+		do {
+			a = i + 1;
+			i++;
+		} while (aux[i] != 'I');
+	}
+	for (int i = a; aux[i] != '\0'; ++i) {
+		if (aux[i] == 'I') {
+			c++;
+		}
+	}
+	if (c >= 5) {
+		for (int i = 0; i < c/5; ++i) {
+			aux[a] = 'V';
+			for (int i = a + 1; i < a + 5; ++i) {
+				aux[i] = ' ';
+			}
+			a++;
+			ordena(aux);
+		}
+	}
+}
+
+void substitui2VpX(char aux[]) //Função que procura 2 V's no vetor já organizado e os substitui por um X
+{
+	int c = 0, a, i = 0;
+	if (aux[0] == 'V') {
+		a = 0;
+	}
+	else {
+		do {
+			a = i + 1;
+			i++;
+		} while (aux[i] != 'V');
+	}
+	for (int i = a; aux[i] != '\0'; ++i) {
+		if (aux[i] == 'V') {
+			c++;
+		}
+	}
+	if (c >= 2) {
+		for (int i = 0; i < c/2; ++i) {
+			aux[a] = 'X';
+			aux[a + 1] = ' ';
+			a++;
+			ordena(aux);
+		}
+	}
+}
+
+void substitui5XpL(char aux[]) //Função que procura 5 X's no vetor já organizado e os substitui por um L
+{
+	int c = 0, a, i = 0;
+	if (aux[0] == 'X') {
+		a = 0;
+	}
+	else {
+		do {
+			a = i + 1;
+			i++;
+		} while (aux[i] != 'X');
+	}
+	for (int i = a; aux[i] != '\0'; ++i) {
+		if (aux[i] == 'X') {
+			c++;
+		}
+	}
+	if (c >= 5) {
+		for (int i = 0; i < c/5; ++i) {
+			aux[a] = 'L';
+			for (int i = a + 1; i < a + 5; ++i) {
+				aux[i] = ' ';
+			}
+			a++;
+			ordena(aux);
+		}
+	}
+}
+
+void substitui2LpC(char aux[])
+{
+	int c = 0, a, i = 0;
+	if (aux[0] == 'L') {
+		a = 0;
+	}
+	else {
+		do {
+			a = i + 1;
+			i++;
+		} while (aux[i] != 'L');
+	}
+	for (int i = a; aux[i] != '\0'; ++i) {
+		if (aux[i] == 'L') {
+			c++;
+		}
+	}
+	if (c >= 2) {
+		for (int i = 0; i < c/2; ++i) {
+			aux[a] = 'C';
+			aux[a + 1] = ' ';
+			a++;
+			ordena(aux);
+		}
+	}
+}
+
+void substitui5CpD(char aux[])
+{
+	int c = 0, a, i = 0;
+	if (aux[0] == 'C') {
+		a = 0;
+	}
+	else {
+		do {
+			a = i + 1;
+			i++;
+		} while (aux[i] != 'C');
+	}
+	for (int i = a; aux[i] != '\0'; ++i) {
+		if (aux[i] == 'C') {
+			c++;
+		}
+	}
+	if (c >= 5) {
+		for (int i = 0; i < c/5; ++i) {
+			aux[a] = 'D';
+			for (int i = a + 1; i < a + 5; ++i) {
+				aux[i] = ' ';
+			}
+			a++;
+			ordena(aux);
+		}
+	}
+}
+
+void substitui2DpM(char aux[])
+{
+	int c = 0, a, i = 0;
+	if (aux[0] == 'D') {
+		a = 0;
+	}
+	else {
+		do {
+			a = i + 1;
+			i++;
+		} while (aux[i] != 'D');
+	}
+	for (int i = a; aux[i] != '\0'; ++i) {
+		if (aux[i] == 'D') {
+			c++;
+		}
+	}
+	if (c >= 2) {
+		for (int i = 0; i < c/2; ++i) {
+			aux[a] = 'M';
+			aux[a + 1] = ' ';
+			a++;
+			ordena(aux);
+		}
+	}
+}
+
+bool soma(char aux[], char n1[], char n2[])
+{
+	int b = 2;
+	int c = 0, a;
+	for (int i = 0; n1[i] != '\0'; ++i)	{
+		aux[i] = n1[i];
+		c++;
+		if (n1[i] != 'I' && n1[i] != 'V' && n1[i] != 'X' && n1[i] != 'L' && n1[i] != 'C' && n1[i] != 'D' && n1[i] != 'M') {
+			b--;
+		}
+	}
+	a = c;
+	for (int i = 0; n2[i] != '\0'; ++i) {
+		aux[i+c] = n2[i];
+		a++;
+		if (n2[i] != 'I' && n1[i] != 'V' && n1[i] != 'X' && n1[i] != 'L' && n1[i] != 'C' && n1[i] != 'D' && n1[i] != 'M') {
+			b--;
+		}
+	}
+	aux[a] = '\0';
+	ordena(aux);
+	return b;
+}
+
+void substituiVp5I(char aux[])
+{
+	int a = 0, c = 0, j = 0, g = 0;
+	if (aux[0] == 'V') {
+		j = 0;
+	} else {
+		for (int i = 0; aux[i] != 'V'; ++i) {
+		}
+	}
+	for (int i = 0; aux[i] != '\0'; ++i) {	
+		if (aux[i] == 'V') {
+			c++;
+		}
+		a++;
+	}
+	for (int b = 0; b < c; ++b) {
+		aux[j] = 'I';
+		for (int i = a; i < a + 4; ++i) {
+			aux[i] = 'I';
+		}
+		aux[a + 4] = '\0';
+		a = a + 4;
+		ordena(aux);
+	}
+}
+
+void substituiXp2V(char aux[])
+{
+	int a = 0, c = 0, j = 0;
+	if (aux[0] == 'X') {
+		j = 0;
+	} else {
+		for (int i = 0; aux[i] != 'X'; ++i) {
+			j++;
+		}
+	}
+	for (int i = 0; aux[i] != '\0'; ++i) {	
+		if (aux[i] == 'X') {
+			c++;
+		}
+		a++;
+	}
+	for (int b = 0; b < c; ++b) {
+		aux[j] = 'V';
+		for (int i = a; i < a + 1; ++i) {
+			aux[i] = 'V';
+		}
+		aux[a + 1] = '\0';
+		a = a + 1;
+		ordena(aux);
+	}
+}
+
+void substituiLp5X(char aux[])
+{
+	int a = 0, c = 0, j = 0;
+	if (aux[0] == 'L') {
+		j = 0;
+	} else {
+		for (int i = 0; aux[i] != 'L'; ++i) {
+			j++;
+		}
+	}
+	for (int i = 0; aux[i] != '\0'; ++i) {	
+		if (aux[i] == 'L') {
+			c++;
+		}
+		a++;
+	}
+	for (int b = 0; b < c; ++b) {
+		aux[j] = 'X';
+		for (int i = a; i < a + 4; ++i) {
+			aux[i] = 'X';
+		}
+		a = a + 4;
+		ordena(aux);
+	}
+}
+
+void substituiCp2L(char aux[])
+{
+	int a = 0, c = 0, j = 0;
+	if (aux[0] == 'C') {
+		j = 0;
+	} else {
+		for (int i = 0; aux[i] != 'C'; ++i) {
+			j++;
+		}
+	}
+	for (int i = 0; aux[i] != '\0'; ++i) {	
+		if (aux[i] == 'C') {
+			c++;
+		}
+		a++;
+	}
+	for (int b = 0; b < c; ++b) {
+		aux[j] = 'L';
+		for (int i = a; i < a + 1; ++i) {
+			aux[i] = 'L';
+		}
+		a = a + 1;
+		ordena(aux);
+	}
+}
+
+void substituiDp5C(char aux[])
+{
+	int a = 0, c = 0, j = 0;
+	if (aux[0] == 'D') {
+		j = 0;
+	} else {
+		for (int i = 0; aux[i] != 'D'; ++i) {
+			j++;
+		}
+	}
+	for (int i = 0; aux[i] != '\0'; ++i) {	
+		if (aux[i] == 'D') {
+			c++;
+		}
+		a++;
+	}
+	for (int b = 0; b < c; ++b) {
+		aux[j] = 'C';
+		for (int i = a; i < a + 4; ++i) {
+			aux[i] = 'C';
+		}
+		a = a + 4;
+		ordena(aux);
+	}
+}
+
+void substituiMp2D(char aux[])
+{
+	int a = 0, c = 0, j = 0;
+	if (aux[0] == 'M') {
+		j = 0;
+	} else {
+		for (int i = 0; aux[i] != 'M'; ++i) {
+			j++;
+		}
+	}
+	for (int i = 0; aux[i] != '\0'; ++i) {	
+		if (aux[i] == 'M') {
+			c++;
+		}
+		a++;
+	}
+	for (int b = 0; b < c; ++b) {
+		aux[j] = 'D';
+		for (int i = a; i < a + 1; ++i) {
+			aux[i] = 'D';
+		}
+		a = a + 1;
+		ordena(aux);
+	}
+}
+
+void substituiContra(char aux[])
+{
+	substituiMp2D(aux);
+	substituiDp5C(aux);
+	substituiCp2L(aux);
+	substituiLp5X(aux);
+	substituiXp2V(aux);
+	substituiVp5I(aux);
+}
+
+int checa(char aux[])
+{
+	int c = 0;
+	for (int i = 0; aux[i] != '\0'; ++i)
+	{
+		if (aux[i] != 'I' || aux[i] != 'V' || aux[i] != 'X' || aux[i] != 'L' || aux[i] != 'C' || aux[i] != 'D' || aux[i] != 'M' || aux[i] != ' ') {
+			c++;
+		}
+	}
+	return c;
+}
+
+bool subtrai(char aux[], char n1[], char n2[])
+{
+	int c = 0, d = 0, tru = 0, g = 0;
+	ordena(n1);
+	ordena(n2);
+	tru = checa(n1) + checa(n2);
+	substituiContra(n1);
+	substituiContra(n2);
+	for (int i = 0; n1[i] != '\0'; ++i)	{
+		aux[i] = n1[i];
+		c++;
+	}
+	for (int i = 0; n2[i] != '\0'; ++i)	{
+		g++;
+	}
+	for (int i = g - c; i < g; ++i) {
+		aux[i] = ' ';
+		d++;
+	}
+	aux[d] = '\0';
+	ordena(aux);
+	if (g > c) {
+		tru++;
+	}
+	return tru;
+}
+
+void substitui(char aux[])
+{
+	substitui5IpV(aux);
+	substitui2VpX(aux);
+	substitui5XpL(aux);
+	substitui2LpC(aux);
+	substitui5CpD(aux);
+	substitui2DpM(aux);
+}
+
+void escolhe(char n1[], char n2[], char aux[], char op)
+{
+	switch (op) {
+		case '+':
+		if (soma(aux, n1, n2)) {
+			substitui(aux);
+			imprime_string(aux);
+		} else {
+			printf("erro na soma\n");
+		}
+		break;
+		case '-':
+		if (subtrai(aux, n1, n2)) {
+			substitui(aux);
+			imprime_string(aux);
+		} else {
+			printf("erro na subtracao\n");
+		}
+		break;
+	}
+}
+
+int main()
+{
+	char n1[99999], n2[99999], aux[99999], op;
+	printf("Escolha a operacao:\nSoma(+) e Subtracao(-)\n");
+	scanf(" %c", &op);
+	printf("Insira os valores abaixo:\n(separados por um ENTER)\n");
+	scanf("%s", n1);
+	scanf("%s", n2);
+	escolhe(n1, n2, aux, op);
+	return 0;
+}
